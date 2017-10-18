@@ -31,5 +31,15 @@ public class UserDAO {
         return user;
 
     }
+	 
+	 public void persist(CookingUser cookingUser) {
+		 
+		 EntityManager em = TransactionManager.initTransaction();
+		 
+		 em.persist(cookingUser);
+		 
+		 TransactionManager.closeTransaction();
+		 
+	 }
 
 }

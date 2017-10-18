@@ -49,4 +49,14 @@ public class CookingUserResource {
 		return jsonCookingUser;
 
 	}
+
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void postCookingUser(CookingUser cookingUser) {
+
+		this.dao.persist(cookingUser);
+		
+	}
+	
 }

@@ -1,6 +1,7 @@
 package com.isep.cooking.resources;
 
 import com.isep.cooking.dao.ToolDAO;
+import com.isep.cooking.entities.CookingUser;
 import com.isep.cooking.entities.Tool;
 import com.isep.cooking.jsonEntities.JsonTool;
 import java.util.ArrayList;
@@ -48,5 +49,14 @@ public class ToolResource {
 
 		return jsonTool;
 
+	}
+
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void postCookingUser(Tool tool) {
+
+		this.dao.persist(tool);
+		
 	}
 }

@@ -31,4 +31,14 @@ public class IngredientDAO {
         return ingredient;
 
     }
+	 
+	public void persist(Ingredient ingredient) {
+
+		EntityManager em = TransactionManager.initTransaction();
+
+		em.persist(ingredient);
+
+		TransactionManager.closeTransaction();
+
+	}
 }

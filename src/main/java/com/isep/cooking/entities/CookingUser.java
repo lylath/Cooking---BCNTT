@@ -9,10 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-/**
- *
- * @author Sliveer
- */
 @Entity
 public class CookingUser implements Serializable {
 
@@ -43,30 +39,6 @@ public class CookingUser implements Serializable {
         this.id = UUID.randomUUID();
     }
 
-    private CookingUser(CookingUser toClone) {
-        this.id = toClone.id;
-        this.FirstName = toClone.FirstName;
-        this.LastName = toClone.LastName;
-        this.Password = toClone.Password;
-        this.Email = toClone.Email;
-        this.Age = toClone.Age;
-    }
-    
-    public CookingUser getClone() {
-        return new CookingUser(this);
-    }
-
-    public CookingUser(String FirstName, String LastName, String Password, String Email, int Age, List<Ingredient> ingredients, Recipe[] likedRecipes) {
-        this.id = UUID.randomUUID();
-        this.FirstName = FirstName;
-        this.LastName = LastName;
-        this.Password = Password;
-        this.Email = Email;
-        this.Age = Age;
-        this.ingredients = ingredients;
-//        this.likedRecipes = likedRecipes;
-    }
-
     public CookingUser(String FirstName, String LastName, String Password, String Email, int Age, List<Ingredient> ingredients, List<Recipe> likedRecipes, List<Tool> tools) {
         this.id = UUID.randomUUID();
         this.FirstName = FirstName;
@@ -78,22 +50,6 @@ public class CookingUser implements Serializable {
         this.likedRecipes = likedRecipes;
         this.tools = tools;
     }
-    
-//    public JSONObject toJson() {
-//        
-//        JSONObject jo = new JSONObject();
-//        jo.append("id", id);
-//        jo.add(this.id);
-//        jo.add(this.id);
-//        jo.add(this.id);
-//        jo.add(this.id);
-//        jo.add(this.id);
-//        jo.add(this.id);
-//        jo.add(this.id);
-//        
-//        return jo;
-//        
-//    }
 
     public UUID getId() {
         return id;
@@ -150,14 +106,6 @@ public class CookingUser implements Serializable {
     public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
-//
-//    public Recipe[] getLikedRecipes() {
-//        return likedRecipes;
-//    }
-//
-//    public void setLikedRecipes(Recipe[] likedRecipes) {
-//        this.likedRecipes = likedRecipes;
-//    }
 
     public List<Recipe> getLikedRecipes() {
         return likedRecipes;
@@ -174,5 +122,11 @@ public class CookingUser implements Serializable {
     public void setTools(List<Tool> tools) {
         this.tools = tools;
     }
+	
+	public void generateId() {
+		if (this.id == null) {
+			this.id = UUID.randomUUID();
+		}
+	}
 
 }

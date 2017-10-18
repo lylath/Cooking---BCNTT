@@ -1,6 +1,7 @@
 package com.isep.cooking.resources;
 
 import com.isep.cooking.dao.RecipeDAO;
+import com.isep.cooking.entities.CookingUser;
 import com.isep.cooking.entities.Recipe;
 import com.isep.cooking.jsonEntities.JsonRecipe;
 import java.util.ArrayList;
@@ -48,6 +49,15 @@ public class RecipeResource {
 
 		return jsonRecipe;
 
+	}
+
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void postRecipe(Recipe recipe) {
+
+		this.dao.persist(recipe);
+		
 	}
 
 }

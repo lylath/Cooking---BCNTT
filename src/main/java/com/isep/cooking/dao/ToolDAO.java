@@ -31,5 +31,15 @@ public class ToolDAO {
         return tool;
 
     }
+	 
+	public void persist(Tool tool) {
+
+		EntityManager em = TransactionManager.initTransaction();
+
+		em.persist(tool);
+
+		TransactionManager.closeTransaction();
+
+	}
 
 }

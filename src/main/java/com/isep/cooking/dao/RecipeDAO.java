@@ -1,6 +1,7 @@
 package com.isep.cooking.dao;
 
 import com.isep.cooking.entities.Recipe;
+import com.isep.cooking.entities.Tool;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.EntityManager;
@@ -34,5 +35,15 @@ public class RecipeDAO {
         return recipe;
 
     }
+	 
+	public void persist(Recipe recipe) {
+
+		EntityManager em = TransactionManager.initTransaction();
+
+		em.persist(recipe);
+
+		TransactionManager.closeTransaction();
+
+	}
 
 }

@@ -10,10 +10,6 @@ import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToMany;
 
-/**
- *
- * @author Sliveer
- */
 @Entity
 public class Recipe implements Serializable {
 
@@ -62,21 +58,6 @@ public class Recipe implements Serializable {
         this.tools = tools;
     }
 
-    private Recipe(Recipe toClone) {
-        this.id = toClone.id;
-        this.kcal = toClone.kcal;
-        this.prot = toClone.prot;
-        this.calc = toClone.calc;
-        this.carbs = toClone.carbs;
-        this.name = toClone.name;
-        this.difficulty = toClone.difficulty;
-        this.dishesSize = toClone.dishesSize;
-    }
-    
-    public Recipe getClone() {
-        return new Recipe(this);
-    }
-
     public List<UUID> getIngredientIds() {
         
         List<UUID> ans = new ArrayList<>();
@@ -91,21 +72,6 @@ public class Recipe implements Serializable {
         
     }
     
-//    public CookingUser[] getLikers() {
-//        return likers;
-//    }
-//
-//    public void setLikers(CookingUser[] likers) {
-//        this.likers = likers;
-//    }
-//
-//    public Tool[] getTools() {
-//        return tools;
-//    }
-//
-//    public void setTools(Tool[] tools) {
-//        this.tools = tools;
-//    }
     public UUID getId() {
         return id;
     }
@@ -154,13 +120,6 @@ public class Recipe implements Serializable {
         this.name = name;
     }
 
-//    public Ingredient[] getIngredients() {
-//        return ingredients;
-//    }
-//
-//    public void setIngredients(Ingredient[] ingredients) {
-//        this.ingredients = ingredients;
-//    }
     public int getDifficulty() {
         return difficulty;
     }
@@ -176,14 +135,6 @@ public class Recipe implements Serializable {
     public void setDishesSize(int dishesSize) {
         this.dishesSize = dishesSize;
     }
-
-//    public List<Ingredient> getIngredients() {
-//        return ingredients;
-//    }
-//
-//    public void setIngredients(List<Ingredient> ingredients) {
-//        this.ingredients = ingredients;
-//    }
 
     public List<CookingUser> getLikers() {
         return likers;
@@ -208,5 +159,11 @@ public class Recipe implements Serializable {
     public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
+	
+	public void generateId() {
+		if (this.id == null) {
+			this.id = UUID.randomUUID();
+		}
+	}
 
 }

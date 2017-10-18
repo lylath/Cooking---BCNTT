@@ -31,15 +31,6 @@ public class Ingredient implements Serializable {
         this.users = users;
     }
 
-    private Ingredient(Ingredient toClone) {
-        this.id = toClone.id;
-        this.name = toClone.name;
-    }
-    
-    public Ingredient getClone() {
-        return new Ingredient(this);
-    }
-
     public UUID getId() {
         return id;
     }
@@ -56,14 +47,6 @@ public class Ingredient implements Serializable {
         this.name = name;
     }
 
-//    public Recipe[] getRecipes() {
-//        return recipes;
-//    }
-//
-//    public void setRecipes(Recipe[] recipes) {
-//        this.recipes = recipes;
-//    }
-//
     public List<CookingUser> getUsers() {
         return users;
     }
@@ -72,14 +55,6 @@ public class Ingredient implements Serializable {
         this.users = users;
     }
 
-//    public List<Recipe> getRecipes() {
-//        return recipes;
-//    }
-//
-//    public void setRecipes(List<Recipe> recipes) {
-//        this.recipes = recipes;
-//    }
-
     public List<Recipe> getRecipes() {
         return recipes;
     }
@@ -87,5 +62,11 @@ public class Ingredient implements Serializable {
     public void setRecipes(List<Recipe> recipes) {
         this.recipes = recipes;
     }
+	
+	public void generateId() {
+		if (this.id == null) {
+			this.id = UUID.randomUUID();
+		}
+	}
 
 }

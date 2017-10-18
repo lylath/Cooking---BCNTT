@@ -1,6 +1,7 @@
 package com.isep.cooking.resources;
 
 import com.isep.cooking.dao.IngredientDAO;
+import com.isep.cooking.entities.CookingUser;
 import com.isep.cooking.entities.Ingredient;
 import com.isep.cooking.jsonEntities.JsonIngredient;
 import java.util.ArrayList;
@@ -48,5 +49,14 @@ public class IngredientResource {
 
 		return jsonIngredient;
 
+	}
+
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void postIngredient(Ingredient ingredient) {
+
+		this.dao.persist(ingredient);
+		
 	}
 }

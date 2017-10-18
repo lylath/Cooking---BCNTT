@@ -9,10 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-/**
- *
- * @author Sliveer
- */
 @Entity
 public class Tool implements Serializable {
 
@@ -39,15 +35,6 @@ public class Tool implements Serializable {
         this.recipes = recipes;
     }
 
-    private Tool(Tool toClone) {
-        this.id = toClone.id;
-        this.name = toClone.name;
-    }
-    
-    public Tool getClone() {
-        return new Tool(this);
-    }
-
     public UUID getId() {
         return id;
     }
@@ -64,22 +51,6 @@ public class Tool implements Serializable {
         this.name = name;
     }
 
-//    public CookingUser[] getUser() {
-//        return users;
-//    }
-//
-//    public void setUser(CookingUser[] user) {
-//        this.users = user;
-//    }
-//
-//    public Recipe[] getRecipes() {
-//        return recipes;
-//    }
-//
-//    public void setRecipes(Recipe[] recipes) {
-//        this.recipes = recipes;
-//    }
-
     public List<CookingUser> getUsers() {
         return users;
     }
@@ -95,5 +66,11 @@ public class Tool implements Serializable {
     public void setRecipes(List<Recipe> recipes) {
         this.recipes = recipes;
     }
+	
+	public void generateId() {
+		if (this.id == null) {
+			this.id = UUID.randomUUID();
+		}
+	}
     
 }
