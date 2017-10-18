@@ -6,10 +6,6 @@ import java.util.List;
 import java.util.UUID;
 import javax.persistence.EntityManager;
 
-/**
- *
- * @author Sliveer
- */
 public class RecipeDAO {
     
      public List<Recipe> getRecipes() {

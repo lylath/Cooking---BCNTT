@@ -8,10 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-/**
- *
- * @author Sliveer
- */
 //@Entity
 public class Comment implements Serializable {      //NOT IMPLEMENTED YET
 /*

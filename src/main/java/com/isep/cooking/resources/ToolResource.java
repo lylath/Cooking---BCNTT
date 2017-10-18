@@ -1,7 +1,6 @@
 package com.isep.cooking.resources;
 
 import com.isep.cooking.dao.ToolDAO;
-import com.isep.cooking.entities.CookingUser;
 import com.isep.cooking.entities.Tool;
 import com.isep.cooking.jsonEntities.JsonTool;
 import java.util.ArrayList;
@@ -20,6 +19,7 @@ public class ToolResource {
 	ToolDAO dao = new ToolDAO();
 
 	@GET
+	@Path("get")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public List<JsonTool> getTool() {
@@ -38,6 +38,7 @@ public class ToolResource {
 	}
 
 	@POST
+	@Path("get")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public JsonTool getToolById(String id) {
@@ -52,6 +53,7 @@ public class ToolResource {
 	}
 
 	@POST
+	@Path("new")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void postCookingUser(Tool tool) {

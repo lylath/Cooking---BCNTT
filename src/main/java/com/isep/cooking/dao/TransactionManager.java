@@ -5,7 +5,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-
 public class TransactionManager {
     
     public final static String DATABASE_PU = "cookingPU";

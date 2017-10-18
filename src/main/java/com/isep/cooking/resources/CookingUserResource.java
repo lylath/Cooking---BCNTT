@@ -19,6 +19,7 @@ public class CookingUserResource {
 	UserDAO dao = new UserDAO();
 
 	@GET
+	@Path("get")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public List<JsonCookingUser> getCookingUser() {
@@ -37,6 +38,7 @@ public class CookingUserResource {
 	}
 
 	@POST
+	@Path("get")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public JsonCookingUser getCookingUserById(String id) {
@@ -51,6 +53,7 @@ public class CookingUserResource {
 	}
 
 	@POST
+	@Path("new")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void postCookingUser(CookingUser cookingUser) {

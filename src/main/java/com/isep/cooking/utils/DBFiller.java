@@ -9,10 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 
-/**
- *
- * @author Sliveer
- */
 public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEEDED (for testing purposes only)
 
 	public static void main(String[] args) {

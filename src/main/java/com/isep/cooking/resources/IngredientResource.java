@@ -1,7 +1,6 @@
 package com.isep.cooking.resources;
 
 import com.isep.cooking.dao.IngredientDAO;
-import com.isep.cooking.entities.CookingUser;
 import com.isep.cooking.entities.Ingredient;
 import com.isep.cooking.jsonEntities.JsonIngredient;
 import java.util.ArrayList;
@@ -20,6 +19,7 @@ public class IngredientResource {
 	IngredientDAO dao = new IngredientDAO();
 
 	@GET
+	@Path("get")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public List<JsonIngredient> getIngredient() {
@@ -38,6 +38,7 @@ public class IngredientResource {
 	}
 
 	@POST
+	@Path("get")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public JsonIngredient getIngredientById(String id) {
@@ -52,6 +53,7 @@ public class IngredientResource {
 	}
 
 	@POST
+	@Path("new")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void postIngredient(Ingredient ingredient) {

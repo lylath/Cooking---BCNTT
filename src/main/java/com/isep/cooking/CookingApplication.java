@@ -7,10 +7,6 @@ import com.isep.cooking.resources.ToolResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Environment;
 
-/**
- *
- * @author Sliveer
- */
 public class CookingApplication extends Application<CookingConfiguration> {
 
     public static void main(String[] args) throws Exception {

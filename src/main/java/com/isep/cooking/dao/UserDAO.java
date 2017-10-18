@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.UUID;
 import javax.persistence.EntityManager;
 
-
 public class UserDAO {
     
      public List<CookingUser> getCookingUser() {
