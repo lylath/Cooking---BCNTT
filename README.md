@@ -48,7 +48,6 @@ INFO  [2017-10-20 07:00:42,010] org.eclipse.jetty.setuid.SetUIDListener: Opened 
 INFO  [2017-10-20 07:00:42,011] org.eclipse.jetty.server.Server: jetty-9.4.6.v20170531
 INFO  [2017-10-20 07:00:42,694] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
 
-    ***
     GET     /ingredient/get (com.isep.cooking.resources.IngredientResource)
     POST    /ingredient/get (com.isep.cooking.resources.IngredientResource)
     POST    /ingredient/new (com.isep.cooking.resources.IngredientResource)
@@ -61,7 +60,6 @@ INFO  [2017-10-20 07:00:42,694] io.dropwizard.jersey.DropwizardResourceConfig: T
     GET     /user/get (com.isep.cooking.resources.CookingUserResource)
     POST    /user/get (com.isep.cooking.resources.CookingUserResource)
     POST    /user/new (com.isep.cooking.resources.CookingUserResource)
-    ***
 
 INFO  [2017-10-20 07:00:42,697] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@6b357eb6{/,null,AVAILABLE}
 INFO  [2017-10-20 07:00:42,703] io.dropwizard.setup.AdminEnvironment: tasks = 
@@ -84,7 +82,7 @@ INFO  [2017-10-20 07:00:42,755] org.eclipse.jetty.server.AbstractConnector: Star
 INFO  [2017-10-20 07:00:42,755] org.eclipse.jetty.server.Server: Started @3211ms
 ```
 
-The bold part represent the resources of the API : the URL you can call.
+The second section lists the resources of the API : the URL you can call.
 
 ### GET Request
 Let's have a closer look to the first line.
