@@ -58,8 +58,9 @@ public class CookingUserResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void postCookingUser(CookingUser cookingUser) {
 
-		cookingUser.generateId();
-		this.dao.persist(cookingUser);
+		if (cookingUser.generateId()) {
+			this.dao.persist(cookingUser);
+		}
 
 	}
 

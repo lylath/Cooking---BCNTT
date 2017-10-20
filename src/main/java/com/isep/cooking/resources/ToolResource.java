@@ -58,8 +58,9 @@ public class ToolResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void postCookingUser(Tool tool) {
 
-		tool.generateId();
-		this.dao.persist(tool);
+		if (tool.generateId()) {
+			this.dao.persist(tool);
+		}
 
 	}
 }

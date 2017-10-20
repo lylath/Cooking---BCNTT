@@ -123,10 +123,12 @@ public class CookingUser implements Serializable {
 		this.tools = tools;
 	}
 
-	public void generateId() {
+	public boolean generateId() {
 		if (this.id == null) {
 			this.id = UUID.randomUUID();
+			return true;
 		}
+		return false;
 	}
 
 }

@@ -58,9 +58,10 @@ public class RecipeResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void postRecipe(Recipe recipe) {
 
-		recipe.generateId();
-		this.dao.persist(recipe);
-
+		if (recipe.generateId()) {
+			this.dao.persist(recipe);
+		}
+		
 	}
 
 }

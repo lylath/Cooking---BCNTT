@@ -67,10 +67,12 @@ public class Tool implements Serializable {
 		this.recipes = recipes;
 	}
 
-	public void generateId() {
+	public boolean generateId() {
 		if (this.id == null) {
 			this.id = UUID.randomUUID();
+			return true;
 		}
+		return false;
 	}
 
 }

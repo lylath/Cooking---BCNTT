@@ -160,10 +160,12 @@ public class Recipe implements Serializable {
 		this.ingredients = ingredients;
 	}
 
-	public void generateId() {
+	public boolean generateId() {
 		if (this.id == null) {
 			this.id = UUID.randomUUID();
+			return true;
 		}
+		return false;
 	}
 
 }
