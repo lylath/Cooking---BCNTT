@@ -6,31 +6,31 @@ import java.util.UUID;
 import javax.persistence.EntityManager;
 
 public class ToolDAO {
-    
-     public List<Tool> getTool() {
 
-        EntityManager em = TransactionManager.initTransaction();
+	public List<Tool> getTool() {
 
-        List<Tool> tool = em.createQuery("SELECT t FROM Tool t", Tool.class)
-                .getResultList();
-        TransactionManager.closeTransaction();
+		EntityManager em = TransactionManager.initTransaction();
 
-        return tool;
+		List<Tool> tool = em.createQuery("SELECT t FROM Tool t", Tool.class)
+				.getResultList();
+		TransactionManager.closeTransaction();
 
-    }
-    
-     public Tool getToolById(UUID id) {
+		return tool;
 
-        EntityManager em = TransactionManager.initTransaction();
+	}
+
+	public Tool getToolById(UUID id) {
+
+		EntityManager em = TransactionManager.initTransaction();
 
 		Tool tool = em.find(Tool.class, id);
-		
-        TransactionManager.closeTransaction();
 
-        return tool;
+		TransactionManager.closeTransaction();
 
-    }
-	 
+		return tool;
+
+	}
+
 	public void persist(Tool tool) {
 
 		EntityManager em = TransactionManager.initTransaction();

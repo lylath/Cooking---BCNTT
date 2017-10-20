@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 
 @Path("recipe")
 public class RecipeResource {
-	
+
 	RecipeDAO dao = new RecipeDAO();
 
 	@GET
@@ -26,11 +26,11 @@ public class RecipeResource {
 
 		List<Recipe> recipes = dao.getRecipes();
 		List<JsonRecipe> jsonRecipes = new ArrayList<>();
-		
+
 		for (Recipe r : recipes) {
 
 			jsonRecipes.add(new JsonRecipe(r));
-			
+
 		}
 
 		return jsonRecipes;
@@ -44,7 +44,7 @@ public class RecipeResource {
 	public JsonRecipe getRecipeById(String id) {
 
 		UUID uuid = UUID.fromString(id);
-		
+
 		Recipe recipe = dao.getRecipeById(uuid);
 		JsonRecipe jsonRecipe = new JsonRecipe(recipe);
 
@@ -58,8 +58,9 @@ public class RecipeResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void postRecipe(Recipe recipe) {
 
+		recipe.generateId();
 		this.dao.persist(recipe);
-		
+
 	}
 
 }

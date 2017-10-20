@@ -32,7 +32,7 @@ public class JsonCookingUser {
 		this.Age = toClone.getAge();
 
 		this.retrieveEntitiesId(toClone);
-		
+
 	}
 
 	private void retrieveEntitiesId(CookingUser toClone) {

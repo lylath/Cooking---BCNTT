@@ -19,24 +19,24 @@ public class JsonRecipe {
 	private String name;
 	private int difficulty;
 	private int dishesSize;
-	
+
 	private List<UUID> ingredientsId;
 	private List<UUID> toolsId;
 	private List<UUID> likersId;
-	
-    public JsonRecipe(Recipe toClone) {
-        this.id = toClone.getId();
-        this.kcal = toClone.getKcal();
-        this.prot = toClone.getProt();
-        this.calc = toClone.getCalc();
-        this.carbs = toClone.getCarbs();
-        this.name = toClone.getName();
-        this.difficulty = toClone.getDifficulty();
-        this.dishesSize = toClone.getDishesSize();
-		
+
+	public JsonRecipe(Recipe toClone) {
+		this.id = toClone.getId();
+		this.kcal = toClone.getKcal();
+		this.prot = toClone.getProt();
+		this.calc = toClone.getCalc();
+		this.carbs = toClone.getCarbs();
+		this.name = toClone.getName();
+		this.difficulty = toClone.getDifficulty();
+		this.dishesSize = toClone.getDishesSize();
+
 		this.retrieveEntitiesId(toClone);
-    }
-	
+	}
+
 	private void retrieveEntitiesId(Recipe toClone) {
 
 		this.ingredientsId = new ArrayList<>();

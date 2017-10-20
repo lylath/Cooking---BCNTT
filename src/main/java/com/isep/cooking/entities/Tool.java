@@ -12,65 +12,65 @@ import javax.persistence.ManyToMany;
 @Entity
 public class Tool implements Serializable {
 
-    @Id
-    @Column(name = "ID")
-    private UUID id;
-    
-    private String name;
-    
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "tools")
-    private List<CookingUser> users;
-    
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "tools")
-    private List<Recipe> recipes;
+	@Id
+	@Column(name = "ID")
+	private UUID id;
 
-    public Tool() {
-        this.id = UUID.randomUUID();
-    }
+	private String name;
 
-    public Tool(String name, List<CookingUser> users, List<Recipe> recipes) {
-        this.id = UUID.randomUUID();
-        this.name = name;
-        this.users = users;
-        this.recipes = recipes;
-    }
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "tools")
+	private List<CookingUser> users;
 
-    public UUID getId() {
-        return id;
-    }
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "tools")
+	private List<Recipe> recipes;
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
+	public Tool() {
+		this.id = UUID.randomUUID();
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Tool(String name, List<CookingUser> users, List<Recipe> recipes) {
+		this.id = UUID.randomUUID();
+		this.name = name;
+		this.users = users;
+		this.recipes = recipes;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public UUID getId() {
+		return id;
+	}
 
-    public List<CookingUser> getUsers() {
-        return users;
-    }
+	public void setId(UUID id) {
+		this.id = id;
+	}
 
-    public void setUsers(List<CookingUser> users) {
-        this.users = users;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public List<Recipe> getRecipes() {
-        return recipes;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setRecipes(List<Recipe> recipes) {
-        this.recipes = recipes;
-    }
-	
+	public List<CookingUser> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<CookingUser> users) {
+		this.users = users;
+	}
+
+	public List<Recipe> getRecipes() {
+		return recipes;
+	}
+
+	public void setRecipes(List<Recipe> recipes) {
+		this.recipes = recipes;
+	}
+
 	public void generateId() {
 		if (this.id == null) {
 			this.id = UUID.randomUUID();
 		}
 	}
-    
+
 }

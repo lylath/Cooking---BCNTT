@@ -26,11 +26,11 @@ public class CookingUserResource {
 
 		List<CookingUser> cookingUser = dao.getCookingUser();
 		List<JsonCookingUser> jsonCookingUsers = new ArrayList<>();
-		
+
 		for (CookingUser u : cookingUser) {
 
 			jsonCookingUsers.add(new JsonCookingUser(u));
-			
+
 		}
 
 		return jsonCookingUsers;
@@ -44,7 +44,7 @@ public class CookingUserResource {
 	public JsonCookingUser getCookingUserById(String id) {
 
 		UUID uuid = UUID.fromString(id);
-		
+
 		CookingUser cookingUser = dao.getCookingUserById(uuid);
 		JsonCookingUser jsonCookingUser = new JsonCookingUser(cookingUser);
 
@@ -58,8 +58,9 @@ public class CookingUserResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void postCookingUser(CookingUser cookingUser) {
 
+		cookingUser.generateId();
 		this.dao.persist(cookingUser);
-		
+
 	}
-	
+
 }

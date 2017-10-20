@@ -7,24 +7,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-
 public class JsonIngredient {
-	
-    private UUID id;
-    private String name;
-	
+
+	private UUID id;
+	private String name;
+
 	private List<UUID> usersId;
 	private List<UUID> recipesId;
-	
-    public JsonIngredient(Ingredient toClone) {
-        
+
+	public JsonIngredient(Ingredient toClone) {
+
 		this.id = toClone.getId();
-        this.name = toClone.getName();
-		
+		this.name = toClone.getName();
+
 		this.retrieveEntitiesId(toClone);
-		
-    }
-	
+
+	}
+
 	private void retrieveEntitiesId(Ingredient toClone) {
 
 		this.recipesId = new ArrayList<>();

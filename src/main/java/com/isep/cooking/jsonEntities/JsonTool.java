@@ -15,17 +15,16 @@ public class JsonTool {
 
 	private List<UUID> usersId;
 	private List<UUID> recipesId;
-	
-	
-    public JsonTool(Tool toClone) {
-		
-        this.id = toClone.getId();
-        this.name = toClone.getName();
-    
+
+	public JsonTool(Tool toClone) {
+
+		this.id = toClone.getId();
+		this.name = toClone.getName();
+
 		this.retrieveEntitiesId(toClone);
-		
+
 	}
-	
+
 	private void retrieveEntitiesId(Tool toClone) {
 
 		this.recipesId = new ArrayList<>();

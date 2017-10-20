@@ -7,31 +7,31 @@ import java.util.UUID;
 import javax.persistence.EntityManager;
 
 public class RecipeDAO {
-    
-     public List<Recipe> getRecipes() {
 
-        EntityManager em = TransactionManager.initTransaction();
+	public List<Recipe> getRecipes() {
 
-        List<Recipe> recipes = em.createQuery("SELECT r FROM Recipe r", Recipe.class)
-                .getResultList();
-        TransactionManager.closeTransaction();
+		EntityManager em = TransactionManager.initTransaction();
 
-        return recipes;
+		List<Recipe> recipes = em.createQuery("SELECT r FROM Recipe r", Recipe.class)
+				.getResultList();
+		TransactionManager.closeTransaction();
 
-    }
-    
-     public Recipe getRecipeById(UUID id) {
+		return recipes;
 
-        EntityManager em = TransactionManager.initTransaction();
+	}
+
+	public Recipe getRecipeById(UUID id) {
+
+		EntityManager em = TransactionManager.initTransaction();
 
 		Recipe recipe = em.find(Recipe.class, id);
-		
-        TransactionManager.closeTransaction();
 
-        return recipe;
+		TransactionManager.closeTransaction();
 
-    }
-	 
+		return recipe;
+
+	}
+
 	public void persist(Recipe recipe) {
 
 		EntityManager em = TransactionManager.initTransaction();

@@ -6,33 +6,33 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 public class TransactionManager {
-    
-    public final static String DATABASE_PU = "cookingPU";
 
-    private static EntityManager em;
-    private static EntityManagerFactory emf;
-    private static EntityTransaction transac;
+	public final static String DATABASE_PU = "cookingPU";
 
-    public static EntityManager initTransaction() {
-        
-        if (emf == null) {
-            emf = Persistence.createEntityManagerFactory(DATABASE_PU);
-        }
-        em = emf.createEntityManager();
-        transac = em.getTransaction();
-        transac.begin();
-        return em;
-        
-    }
+	private static EntityManager em;
+	private static EntityManagerFactory emf;
+	private static EntityTransaction transac;
 
-    public static void closeTransaction() {
-        transac.commit();
-        em.close();
-        if(emf.isOpen() || emf != null) {
-            emf.close();
-        }
-        emf = null;
-        em = null;
-    }
+	public static EntityManager initTransaction() {
+
+		if (emf == null) {
+			emf = Persistence.createEntityManagerFactory(DATABASE_PU);
+		}
+		em = emf.createEntityManager();
+		transac = em.getTransaction();
+		transac.begin();
+		return em;
+
+	}
+
+	public static void closeTransaction() {
+		transac.commit();
+		em.close();
+		if (emf.isOpen() || emf != null) {
+			emf.close();
+		}
+		emf = null;
+		em = null;
+	}
 
 }
