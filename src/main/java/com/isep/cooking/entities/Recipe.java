@@ -14,7 +14,7 @@ import javax.persistence.ManyToMany;
 public class Recipe implements Serializable {
 
 	@Id
-	private UUID id;
+	private String id;
 
 	private int kcal;
 	private int prot;
@@ -41,11 +41,11 @@ public class Recipe implements Serializable {
 	private List<Tool> tools;
 
 	public Recipe() {
-		this.id = UUID.randomUUID();
+		this.id = UUID.randomUUID().toString();
 	}
 
 	public Recipe(int kcal, int prot, int calc, int carbs, String name, int difficulty, int dishesSize, List<Ingredient> ingredients, List<CookingUser> likers, List<Tool> tools) {
-		this.id = UUID.randomUUID();
+		this.id = UUID.randomUUID().toString();
 		this.kcal = kcal;
 		this.prot = prot;
 		this.calc = calc;
@@ -58,9 +58,9 @@ public class Recipe implements Serializable {
 		this.tools = tools;
 	}
 
-	public List<UUID> getIngredientIds() {
+	public List<String> getIngredientIds() {
 
-		List<UUID> ans = new ArrayList<>();
+		List<String> ans = new ArrayList<>();
 
 		for (Ingredient i : ingredients) {
 
@@ -72,11 +72,11 @@ public class Recipe implements Serializable {
 
 	}
 
-	public UUID getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -162,10 +162,22 @@ public class Recipe implements Serializable {
 
 	public boolean generateId() {
 		if (this.id == null) {
-			this.id = UUID.randomUUID();
+			this.id = UUID.randomUUID().toString();
 			return true;
 		}
 		return false;
+	}
+	
+	public void addIngredient(Ingredient i) {
+		this.ingredients.add(i);
+	}
+	
+	public void addLiker(CookingUser c) {
+		this.likers.add(c);
+	}
+	
+	public void addTool(Tool t) {
+		this.tools.add(t);
 	}
 
 }

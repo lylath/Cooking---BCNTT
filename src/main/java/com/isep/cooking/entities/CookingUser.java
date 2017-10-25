@@ -13,7 +13,7 @@ import javax.persistence.ManyToMany;
 public class CookingUser implements Serializable {
 
 	@Id
-	private UUID id;
+	private String id;
 
 	private String FirstName;
 	private String LastName;
@@ -36,11 +36,11 @@ public class CookingUser implements Serializable {
 	/*@ManyToMany(cascade = CascadeType.MERGE, mappedBy = "")       NOT IMPLEMENTED YET
     private Recipe[] writtenRecipes;*/
 	public CookingUser() {
-		this.id = UUID.randomUUID();
+		this.id = UUID.randomUUID().toString();
 	}
 
 	public CookingUser(String FirstName, String LastName, String Password, String Email, int Age, List<Ingredient> ingredients, List<Recipe> likedRecipes, List<Tool> tools) {
-		this.id = UUID.randomUUID();
+		this.id = UUID.randomUUID().toString();
 		this.FirstName = FirstName;
 		this.LastName = LastName;
 		this.Password = Password;
@@ -51,11 +51,11 @@ public class CookingUser implements Serializable {
 		this.tools = tools;
 	}
 
-	public UUID getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -125,10 +125,22 @@ public class CookingUser implements Serializable {
 
 	public boolean generateId() {
 		if (this.id == null) {
-			this.id = UUID.randomUUID();
+			this.id = UUID.randomUUID().toString();
 			return true;
 		}
 		return false;
+	}
+	
+	public void addIngredient(Ingredient i) {
+		this.ingredients.add(i);
+	}
+	
+	public void addLikedRecipe(Recipe r) {
+		this.likedRecipes.add(r);
+	}
+	
+	public void addTool(Tool t) {
+		this.tools.add(t);
 	}
 
 }

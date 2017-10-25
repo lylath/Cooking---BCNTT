@@ -9,11 +9,11 @@ import java.util.UUID;
 
 public class JsonIngredient {
 
-	private UUID id;
+	private String id;
 	private String name;
 
-	private List<UUID> usersId;
-	private List<UUID> recipesId;
+	private List<String> usersId;
+	private List<String> recipesId;
 
 	public JsonIngredient(Ingredient toClone) {
 
@@ -42,11 +42,11 @@ public class JsonIngredient {
 		}
 	}
 
-	public UUID getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -58,19 +58,19 @@ public class JsonIngredient {
 		this.name = name;
 	}
 
-	public List<UUID> getUsersId() {
+	public List<String> getUsersId() {
 		return usersId;
 	}
 
-	public void setUsersId(List<UUID> usersId) {
+	public void setUsersId(List<String> usersId) {
 		this.usersId = usersId;
 	}
 
-	public List<UUID> getRecipesId() {
+	public List<String> getRecipesId() {
 		return recipesId;
 	}
 
-	public void setRecipesId(List<UUID> recipesId) {
+	public void setRecipesId(List<String> recipesId) {
 		this.recipesId = recipesId;
 	}
 }

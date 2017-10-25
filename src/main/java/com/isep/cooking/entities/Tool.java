@@ -14,7 +14,7 @@ public class Tool implements Serializable {
 
 	@Id
 	@Column(name = "ID")
-	private UUID id;
+	private String id;
 
 	private String name;
 
@@ -25,21 +25,21 @@ public class Tool implements Serializable {
 	private List<Recipe> recipes;
 
 	public Tool() {
-		this.id = UUID.randomUUID();
+		this.id = UUID.randomUUID().toString();
 	}
 
 	public Tool(String name, List<CookingUser> users, List<Recipe> recipes) {
-		this.id = UUID.randomUUID();
+		this.id = UUID.randomUUID().toString();
 		this.name = name;
 		this.users = users;
 		this.recipes = recipes;
 	}
 
-	public UUID getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -69,10 +69,18 @@ public class Tool implements Serializable {
 
 	public boolean generateId() {
 		if (this.id == null) {
-			this.id = UUID.randomUUID();
+			this.id = UUID.randomUUID().toString();
 			return true;
 		}
 		return false;
 	}
-
+	
+	public void addUser(CookingUser c) {
+		this.users.add(c);
+	}
+	
+	public void addRecipe(Recipe r) {
+		this.recipes.add(r);
+	}
+	
 }

@@ -12,7 +12,7 @@ import javax.persistence.ManyToMany;
 public class Ingredient implements Serializable {
 
 	@Id
-	private UUID id;
+	private String id;
 	private String name;
 
 	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "ingredients")
@@ -25,17 +25,17 @@ public class Ingredient implements Serializable {
 	}
 
 	public Ingredient(String name, List<Recipe> recipes, List<CookingUser> users) {
-		this.id = UUID.randomUUID();
+		this.id = UUID.randomUUID().toString();
 		this.name = name;
 		this.recipes = recipes;
 		this.users = users;
 	}
 
-	public UUID getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -65,10 +65,18 @@ public class Ingredient implements Serializable {
 
 	public boolean generateId() {
 		if (this.id == null) {
-			this.id = UUID.randomUUID();
+			this.id = UUID.randomUUID().toString();
 			return true;
 		}
 		return false;
+	}
+	
+	public void addCookingUser(CookingUser c) {
+		this.users.add(c);
+	}
+	
+	public void addRecipe(Recipe r) {
+		this.recipes.add(r);
 	}
 
 }

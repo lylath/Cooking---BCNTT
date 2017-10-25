@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public class JsonRecipe {
 
-	private UUID id;
+	private String id;
 
 	private int kcal;
 	private int prot;
@@ -20,9 +20,9 @@ public class JsonRecipe {
 	private int difficulty;
 	private int dishesSize;
 
-	private List<UUID> ingredientsId;
-	private List<UUID> toolsId;
-	private List<UUID> likersId;
+	private List<String> ingredientsId;
+	private List<String> toolsId;
+	private List<String> likersId;
 
 	public JsonRecipe(Recipe toClone) {
 		this.id = toClone.getId();
@@ -62,11 +62,11 @@ public class JsonRecipe {
 		}
 	}
 
-	public UUID getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -126,27 +126,27 @@ public class JsonRecipe {
 		this.dishesSize = dishesSize;
 	}
 
-	public List<UUID> getIngredientsId() {
+	public List<String> getIngredientsId() {
 		return ingredientsId;
 	}
 
-	public void setIngredientsId(List<UUID> ingredientsId) {
+	public void setIngredientsId(List<String> ingredientsId) {
 		this.ingredientsId = ingredientsId;
 	}
 
-	public List<UUID> getToolsId() {
+	public List<String> getToolsId() {
 		return toolsId;
 	}
 
-	public void setToolsId(List<UUID> toolsId) {
+	public void setToolsId(List<String> toolsId) {
 		this.toolsId = toolsId;
 	}
 
-	public List<UUID> getLikersId() {
+	public List<String> getLikersId() {
 		return likersId;
 	}
 
-	public void setLikersId(List<UUID> likersId) {
+	public void setLikersId(List<String> likersId) {
 		this.likersId = likersId;
 	}
 }

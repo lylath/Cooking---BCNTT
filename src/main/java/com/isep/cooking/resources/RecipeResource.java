@@ -3,6 +3,7 @@ package com.isep.cooking.resources;
 import com.isep.cooking.dao.RecipeDAO;
 import com.isep.cooking.entities.Recipe;
 import com.isep.cooking.jsonEntities.JsonRecipe;
+import com.isep.cooking.jsonEntities.JsonRecipeRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -47,6 +48,26 @@ public class RecipeResource {
 
 		Recipe recipe = dao.getRecipeById(uuid);
 		JsonRecipe jsonRecipe = new JsonRecipe(recipe);
+
+		return jsonRecipe;
+
+	}
+
+	@POST
+	@Path("get/withFrigo")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public List<JsonRecipe> getRecipeByIngredients(JsonRecipeRequest request) {
+		
+		List<Recipe> recipes = dao.getRecipesByIngredients(request.getIngredientIds());
+		
+		List<JsonRecipe> jsonRecipe = new ArrayList<>();
+		
+		for (Recipe r : recipes) {
+			
+			jsonRecipe.add(new JsonRecipe(r));
+			
+		}
 
 		return jsonRecipe;
 
