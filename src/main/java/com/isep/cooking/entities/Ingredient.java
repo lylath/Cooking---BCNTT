@@ -24,7 +24,10 @@ public class Ingredient implements Serializable {
 	public Ingredient() {
 	}
 
-	public Ingredient(String name, List<Recipe> recipes, List<CookingUser> users) {
+	public Ingredient(
+			String name,
+			List<Recipe> recipes,
+			List<CookingUser> users) {
 		this.id = UUID.randomUUID().toString();
 		this.name = name;
 		this.recipes = recipes;
@@ -70,11 +73,11 @@ public class Ingredient implements Serializable {
 		}
 		return false;
 	}
-	
+
 	public void addCookingUser(CookingUser c) {
 		this.users.add(c);
 	}
-	
+
 	public void addRecipe(Recipe r) {
 		this.recipes.add(r);
 	}

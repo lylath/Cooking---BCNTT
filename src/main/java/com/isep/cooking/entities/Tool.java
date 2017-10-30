@@ -74,13 +74,13 @@ public class Tool implements Serializable {
 		}
 		return false;
 	}
-	
+
 	public void addUser(CookingUser c) {
 		this.users.add(c);
 	}
-	
+
 	public void addRecipe(Recipe r) {
 		this.recipes.add(r);
 	}
-	
+
 }

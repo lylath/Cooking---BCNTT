@@ -11,15 +11,17 @@ public class UserDAO {
 
 		EntityManager em = TransactionManager.initTransaction();
 
-		List<CookingUser> user = em.createQuery("SELECT u FROM CookingUser u", CookingUser.class)
+		List<CookingUser> user = em.createQuery("SELECT u FROM CookingUser u",
+				CookingUser.class)
 				.getResultList();
+		
 		TransactionManager.closeTransaction();
 
 		return user;
 
 	}
 
-	public CookingUser getCookingUserById(UUID id) {
+	public CookingUser getCookingUserById(String id) {
 
 		EntityManager em = TransactionManager.initTransaction();
 

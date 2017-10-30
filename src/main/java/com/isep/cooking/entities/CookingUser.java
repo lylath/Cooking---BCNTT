@@ -39,7 +39,9 @@ public class CookingUser implements Serializable {
 		this.id = UUID.randomUUID().toString();
 	}
 
-	public CookingUser(String FirstName, String LastName, String Password, String Email, int Age, List<Ingredient> ingredients, List<Recipe> likedRecipes, List<Tool> tools) {
+	public CookingUser(String FirstName, String LastName, String Password,
+			String Email, int Age, List<Ingredient> ingredients,
+			List<Recipe> likedRecipes, List<Tool> tools) {
 		this.id = UUID.randomUUID().toString();
 		this.FirstName = FirstName;
 		this.LastName = LastName;
@@ -130,15 +132,15 @@ public class CookingUser implements Serializable {
 		}
 		return false;
 	}
-	
+
 	public void addIngredient(Ingredient i) {
 		this.ingredients.add(i);
 	}
-	
+
 	public void addLikedRecipe(Recipe r) {
 		this.likedRecipes.add(r);
 	}
-	
+
 	public void addTool(Tool t) {
 		this.tools.add(t);
 	}

@@ -15,7 +15,8 @@ public class RecipeDAO {
 
 		EntityManager em = TransactionManager.initTransaction();
 
-		List<Recipe> recipes = em.createQuery("SELECT r FROM Recipe r", Recipe.class)
+		List<Recipe> recipes = em.createQuery("SELECT r FROM Recipe r",
+				Recipe.class)
 				.getResultList();
 		TransactionManager.closeTransaction();
 
@@ -23,7 +24,7 @@ public class RecipeDAO {
 
 	}
 
-	public Recipe getRecipeById(UUID id) {
+	public Recipe getRecipeById(String id) {
 
 		EntityManager em = TransactionManager.initTransaction();
 
@@ -38,18 +39,17 @@ public class RecipeDAO {
 	public List<Recipe> getRecipesByIngredients(List<String> ingredientsId) {
 
 		List<Recipe> answer = new ArrayList<>();
-		
+
 		EntityManager em = TransactionManager.initTransaction();
-		
-		String ingredientList = "(";
-		for (String id : ingredientsId) {
-			ingredientList += "'" + id.toString() + "', ";
-		}
-		ingredientList += "'0')";
-		
-		String values;
-		
-		List<Recipe> recipes = em.createNativeQuery("SELECT * FROM RECIPE WHERE ID IN (SELECT RECIPES_ID FROM RECIPE_INGREDIENT WHERE INGREDIENTS_ID IN " + ingredientList + ")", Recipe.class).getResultList();
+
+		String ingredientList = this.createGroup(ingredientsId);
+
+		List<Recipe> recipes = em.createNativeQuery(
+				"SELECT * FROM RECIPE WHERE ID IN "
+				+ "(SELECT RECIPES_ID FROM RECIPE_INGREDIENT "
+				+ "WHERE INGREDIENTS_ID IN " + ingredientList + ")",
+				Recipe.class).getResultList();
+
 		answer.addAll(recipes);
 		for (Recipe r : recipes) {
 			for (Ingredient i : r.getIngredients()) {
@@ -58,30 +58,6 @@ public class RecipeDAO {
 					break;
 				}
 			}
-//
-//	public List<Recipe> getRecipesByIngredients(List<UUID> ingredientsId) {
-//
-//		List<Recipe> answer = new ArrayList<>();
-//		
-//		EntityManager em = TransactionManager.initTransaction();
-//		
-//		String ingredientList = "(";
-//		for (UUID id : ingredientsId) {
-//			ingredientList += id.toString() + ", ";
-//		}
-//		ingredientList += "0)";
-//		
-//		String values;
-//		
-//		List<Recipe> recipes = em.createNativeQuery("SELECT * FROM RECIPE WHERE ID = (SELECT RECIPES_ID FROM RECIPE_INGREDIENT WHERE INGREDIENTS_ID IN " + ingredientList + ")", Recipe.class).getResultList();
-//		answer.addAll(recipes);
-//		for (Recipe r : recipes) {
-//			for (Ingredient i : r.getIngredients()) {
-//				if (!ingredientsId.contains(i.getId())) {
-//					answer.remove(r);
-//					break;
-//				}
-//			}
 		}
 
 		TransactionManager.closeTransaction();
@@ -97,6 +73,18 @@ public class RecipeDAO {
 		em.persist(recipe);
 
 		TransactionManager.closeTransaction();
+
+	}
+
+	private String createGroup(List<String> s) {
+
+		String group = "(";
+		for (String element : s) {
+			group += "'" + element + "', ";
+		}
+		group += "'0')";
+		
+		return group;
 
 	}
 
