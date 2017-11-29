@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -18,6 +19,9 @@ public class CookingUser implements Serializable {
 	private String FirstName;
 	private String LastName;
 	private String Password;
+	private String hashedSessionId;
+	
+	@Column(unique = true)
 	private String Email;
 	private int Age;
 
@@ -39,11 +43,12 @@ public class CookingUser implements Serializable {
 		this.id = UUID.randomUUID().toString();
 	}
 
-	public CookingUser(String FirstName, String LastName, String Password, String Email, int Age, List<Ingredient> ingredients, List<Recipe> likedRecipes, List<Tool> tools) {
+	public CookingUser(String FirstName, String LastName, String Password, String hashedSessionId, String Email, int Age, List<Ingredient> ingredients, List<Recipe> likedRecipes, List<Tool> tools) {
 		this.id = UUID.randomUUID().toString();
 		this.FirstName = FirstName;
 		this.LastName = LastName;
 		this.Password = Password;
+		this.hashedSessionId = hashedSessionId;
 		this.Email = Email;
 		this.Age = Age;
 		this.ingredients = ingredients;
@@ -81,6 +86,14 @@ public class CookingUser implements Serializable {
 
 	public void setPassword(String Password) {
 		this.Password = Password;
+	}
+
+	public String getHashedSessionId() {
+		return hashedSessionId;
+	}
+
+	public void setHashedSessionId(String hashedSessionId) {
+		this.hashedSessionId = hashedSessionId;
 	}
 
 	public String getEmail() {

@@ -16,7 +16,7 @@ public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEED
 		Ingredient pain = new Ingredient("pain", new ArrayList<>(), new ArrayList<>());
 		Ingredient chocolat = new Ingredient("chocolat", new ArrayList<>(), new ArrayList<>());
 		
-		CookingUser bob = new CookingUser("bob", "lemoch", "abc", "bob@bob.fr", 8, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+		CookingUser bob = new CookingUser("bob", "lemoch", "abc", "", "bob@bob.fr", 8, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 		
 		Tool microOnde = new Tool("micro-ondes", new ArrayList<>(), new ArrayList<>());
 		

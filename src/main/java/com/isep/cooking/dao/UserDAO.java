@@ -4,6 +4,7 @@ import com.isep.cooking.entities.CookingUser;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.EntityManager;
+import org.apache.commons.codec.digest.DigestUtils;
 
 public class UserDAO {
 
@@ -39,6 +40,35 @@ public class UserDAO {
 
 		TransactionManager.closeTransaction();
 
+	}
+
+	public CookingUser getUserByMail(String mail) {
+
+		EntityManager em = TransactionManager.initTransaction();
+
+		CookingUser user = em.createQuery(
+				"SELECT u FROM CookingUser u WHERE u.Email = :mail", CookingUser.class)
+				.setParameter("mail", mail)
+				.getSingleResult();
+
+		TransactionManager.closeTransaction();
+
+		return user;
+		
+	}
+	
+	public String generateSessionId(CookingUser user) {
+		
+		EntityManager em = TransactionManager.initTransaction();
+		
+		String sessionId = UUID.randomUUID().toString();
+		
+		user.setHashedSessionId(new String(DigestUtils.sha512(sessionId)));
+		
+		TransactionManager.closeTransaction();
+		
+		return sessionId;
+		
 	}
 
 }
