@@ -21,12 +21,15 @@ public class Recipe implements Serializable {
 	private int calc;
 	private int carbs;
 	private String name;
+	private String description;
 	private int difficulty;
 	private int dishesSize;
 	//private Date recipeDate;
 
 	/*@ManyToMany(cascade = CascadeType.MERGE, mappedBy = "recipes")
     private CookingUser author;*/
+	private List<Integer> quantities;
+	
 	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Ingredient> ingredients;
@@ -45,19 +48,24 @@ public class Recipe implements Serializable {
 	}
 
 	public Recipe(int kcal, int prot, int calc, int carbs, String name,
-			int difficulty, int dishesSize, List<Ingredient> ingredients,
-			List<CookingUser> likers, List<Tool> tools) {
+			String description, int difficulty, int dishesSize, List<Integer> quantities,
+			List<Ingredient> ingredients, List<CookingUser> likers,
+			List<Tool> tools) {
+		
 		this.id = UUID.randomUUID().toString();
 		this.kcal = kcal;
 		this.prot = prot;
 		this.calc = calc;
 		this.carbs = carbs;
 		this.name = name;
+		this.description = description;
 		this.difficulty = difficulty;
 		this.dishesSize = dishesSize;
+		this.quantities = quantities;
 		this.ingredients = ingredients;
 		this.likers = likers;
 		this.tools = tools;
+		
 	}
 
 	public List<String> getIngredientIds() {
@@ -122,6 +130,14 @@ public class Recipe implements Serializable {
 		this.name = name;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public int getDifficulty() {
 		return difficulty;
 	}
@@ -136,6 +152,14 @@ public class Recipe implements Serializable {
 
 	public void setDishesSize(int dishesSize) {
 		this.dishesSize = dishesSize;
+	}
+
+	public List<Integer> getQuantities() {
+		return quantities;
+	}
+
+	public void setQuantities(List<Integer> quantities) {
+		this.quantities = quantities;
 	}
 
 	public List<CookingUser> getLikers() {
@@ -180,6 +204,10 @@ public class Recipe implements Serializable {
 
 	public void addTool(Tool t) {
 		this.tools.add(t);
+	}
+
+	public void addQuantity(int s) {
+		this.quantities.add(s);
 	}
 
 }

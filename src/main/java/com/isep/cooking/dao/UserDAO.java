@@ -15,7 +15,7 @@ public class UserDAO {
 		List<CookingUser> user = em.createQuery("SELECT u FROM CookingUser u",
 				CookingUser.class)
 				.getResultList();
-		
+
 		TransactionManager.closeTransaction();
 
 		return user;
@@ -56,21 +56,37 @@ public class UserDAO {
 		TransactionManager.closeTransaction();
 
 		return user;
-		
+
 	}
-	
+
 	public String generateSessionId(CookingUser user) {
-		
+
 		EntityManager em = TransactionManager.initTransaction();
-		
+
 		String sessionId = UUID.randomUUID().toString();
-		
+
 		user.setHashedSessionId(new String(DigestUtils.sha512(sessionId)));
-		
+
 		TransactionManager.closeTransaction();
-		
+
 		return sessionId;
-		
+
+	}
+
+	public CookingUser authenticateWithToken(String token) {
+
+		EntityManager em = TransactionManager.initTransaction();
+
+		CookingUser user = em.createQuery(
+				"SELECT u FROM CookingUser u WHERE u.hashedSessionId = :token",
+				CookingUser.class)
+				.setParameter("token", token)
+				.getSingleResult();
+
+		TransactionManager.closeTransaction();
+
+		return user;
+
 	}
 
 }

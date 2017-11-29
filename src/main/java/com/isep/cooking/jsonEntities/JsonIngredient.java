@@ -11,6 +11,7 @@ public class JsonIngredient {
 
 	private String id;
 	private String name;
+	private String quantifying;
 
 	private List<String> usersId;
 	private List<String> recipesId;
@@ -19,6 +20,7 @@ public class JsonIngredient {
 
 		this.id = toClone.getId();
 		this.name = toClone.getName();
+		this.quantifying = toClone.getQuantifying();
 
 		this.retrieveEntitiesId(toClone);
 

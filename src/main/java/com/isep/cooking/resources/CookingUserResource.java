@@ -103,6 +103,28 @@ public class CookingUserResource {
 		return "";
 
 	}
+//								Really needed? (probably not)
+//	@POST
+//	@Path("authenticate/token")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	public String authenticateCookingUserWithToken(String token)
+//			throws NoSuchAlgorithmException {
+//
+//		String hashedPass =
+//				new String(DigestUtils.sha512(cookingUser.getPassword()));
+//		
+//		CookingUser dbUser = this.dao.getUserByMail(cookingUser.getEmail());
+//		
+//		if (dbUser.getPassword().equals(hashedPass)) {
+//			
+//			return this.dao.generateSessionId(dbUser);
+//			
+//		}
+//		
+//		return "";
+//
+//	}
 	
 	
 

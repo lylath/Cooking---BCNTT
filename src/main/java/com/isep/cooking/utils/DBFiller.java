@@ -13,15 +13,15 @@ public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEED
 
 	public static void main(String[] args) {
 
-		Ingredient pain = new Ingredient("pain", new ArrayList<>(), new ArrayList<>());
-		Ingredient chocolat = new Ingredient("chocolat", new ArrayList<>(), new ArrayList<>());
+		Ingredient pain = new Ingredient("pain", "grammes", new ArrayList<>(), new ArrayList<>());
+		Ingredient chocolat = new Ingredient("chocolat", "grammes", new ArrayList<>(), new ArrayList<>());
 		
 		CookingUser bob = new CookingUser("bob", "lemoch", "abc", "", "bob@bob.fr", 8, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 		
 		Tool microOnde = new Tool("micro-ondes", new ArrayList<>(), new ArrayList<>());
 		
-		Recipe painAuPain = new Recipe(100, 100, 100, 100, "pain au pain", 0, 0, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
-		Recipe painAuChocolat = new Recipe(100, 100, 100, 100, "pain au chocolat", 0, 0, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+		Recipe painAuPain = new Recipe(100, 100, 100, 100, "pain au pain", "1) prenez le pain\n 2) mangez le", 0, 0, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+		Recipe painAuChocolat = new Recipe(100, 100, 100, 100, "pain au chocolat", "1) prenez le pain\n 2) mettez le chocolat dedans\n 3) mangez le", 0, 0, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 		
 		pain.addCookingUser(bob);
 		pain.addRecipe(painAuPain);
@@ -39,9 +39,12 @@ public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEED
 		painAuPain.addLiker(bob);
 		painAuPain.addIngredient(pain);
 		painAuPain.addTool(microOnde);
+		painAuPain.addQuantity(200);
 		
 		painAuChocolat.addIngredient(pain);
+		painAuChocolat.addQuantity(200);
 		painAuChocolat.addIngredient(chocolat);
+		painAuChocolat.addQuantity(25);
 		painAuChocolat.addTool(microOnde);
 
 //		List<CookingUser> users = new ArrayList<>();

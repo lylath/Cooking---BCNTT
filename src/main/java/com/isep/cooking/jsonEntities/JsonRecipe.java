@@ -19,12 +19,15 @@ public class JsonRecipe {
 	private String name;
 	private int difficulty;
 	private int dishesSize;
-
+	private String description;
+	
+	private List<Integer> quantities;
 	private List<String> ingredientsId;
 	private List<String> toolsId;
 	private List<String> likersId;
 
 	public JsonRecipe(Recipe toClone) {
+		
 		this.id = toClone.getId();
 		this.kcal = toClone.getKcal();
 		this.prot = toClone.getProt();
@@ -33,8 +36,11 @@ public class JsonRecipe {
 		this.name = toClone.getName();
 		this.difficulty = toClone.getDifficulty();
 		this.dishesSize = toClone.getDishesSize();
+		this.description = toClone.getDescription();
+		this.quantities = toClone.getQuantities();
 
 		this.retrieveEntitiesId(toClone);
+		
 	}
 
 	private void retrieveEntitiesId(Recipe toClone) {
@@ -124,6 +130,14 @@ public class JsonRecipe {
 
 	public void setDishesSize(int dishesSize) {
 		this.dishesSize = dishesSize;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public List<String> getIngredientsId() {
