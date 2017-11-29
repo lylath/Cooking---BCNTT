@@ -43,9 +43,7 @@ public class ToolResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public JsonTool getToolById(String id) {
 
-		UUID uuid = UUID.fromString(id);
-
-		Tool tool = dao.getToolById(uuid);
+		Tool tool = dao.getToolById(id);
 		JsonTool jsonTool = new JsonTool(tool);
 
 		return jsonTool;
@@ -63,4 +61,22 @@ public class ToolResource {
 		}
 
 	}
+	
+	@POST
+	@Path("byUser")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public List<JsonTool> getToolsByUserId(String id) {
+
+		List<Tool> tools = dao.getToolsByUser(id);
+		List<JsonTool> jsonTools = new ArrayList<>();
+		
+		for (Tool t : tools) {
+			jsonTools.add(new JsonTool(t));
+		}
+
+		return jsonTools;
+
+	}
+	
 }

@@ -19,7 +19,7 @@ public class ToolDAO {
 
 	}
 
-	public Tool getToolById(UUID id) {
+	public Tool getToolById(String id) {
 
 		EntityManager em = TransactionManager.initTransaction();
 
@@ -38,6 +38,22 @@ public class ToolDAO {
 		em.persist(tool);
 
 		TransactionManager.closeTransaction();
+
+	}
+
+	public List<Tool> getToolsByUser(String userId) {
+
+		EntityManager em = TransactionManager.initTransaction();
+
+		List<Tool> userTools = em.createNativeQuery(
+				"SELECT * FROM TOOL WHERE TOOL.ID = ("
+				+ "SELECT TOOLS_ID FROM COOKINGUSER_TOOL "
+				+ "WHERE USERS_ID = '" + userId + "')",
+				Tool.class).getResultList();
+
+		TransactionManager.closeTransaction();
+
+		return userTools;
 
 	}
 
