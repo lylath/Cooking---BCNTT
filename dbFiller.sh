@@ -88,4 +88,4 @@ curl -X POST -H "Content-Type:application/json" -d @jsons/ingredient22.json http
 
 
 
-java -jar target/cooking-1.0-SNAPSHOT-jar-with-dependencies.jar
+java -jar jars/cooking-dbFiller.jar
