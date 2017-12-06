@@ -22,7 +22,9 @@ Then you should be able to run the project, the installation is finished.
 ## Generate Tables and populate the Database
 
 After the installation the database is still empty, and the tables haven't been generated yet.
-To do so you have to run the file "com.isep.cooking.utils.DBFiller.java". (on Netbeans right click on the file and click on "run file")
+Run the service by clicking on "cooking.cmd" (at the root of the project). If you are running on Mac/Linux you can copy the content of this file on a terminal and run it instead.
+
+To do so you have to run the file "dbFiller.sh" (at the root of the project) with the command ```sh dbFiller.sh``` .
 
 This should be the step where you find out whether the project and the database have been mapped correctly (if this step succeed then there should not be any reason for the REST (haha) not to work).
 
@@ -85,7 +87,7 @@ INFO  [2017-10-20 07:00:42,755] org.eclipse.jetty.server.Server: Started @3211ms
 The second section lists the resources of the API : the URL you can call.
 
 ### GET Request
-Let's have a closer look to the first line.
+Let's take a closer look to the first line.
 
 ```GET     /ingredient/get (com.isep.cooking.resources.IngredientResource)```
 
