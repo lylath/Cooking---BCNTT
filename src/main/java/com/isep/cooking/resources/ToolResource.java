@@ -56,12 +56,10 @@ public class ToolResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void postCookingUser(Tool tool) {
 
-		if (tool.generateId()) {
-			this.dao.persist(tool);
-		}
+		this.dao.persist(tool);
 
 	}
-	
+
 	@POST
 	@Path("byUser")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -70,7 +68,7 @@ public class ToolResource {
 
 		List<Tool> tools = dao.getToolsByUser(id);
 		List<JsonTool> jsonTools = new ArrayList<>();
-		
+
 		for (Tool t : tools) {
 			jsonTools.add(new JsonTool(t));
 		}
@@ -78,5 +76,5 @@ public class ToolResource {
 		return jsonTools;
 
 	}
-	
+
 }

@@ -1,6 +1,10 @@
 package com.isep.cooking.utils;
 
+import com.isep.cooking.dao.IngredientDAO;
+import com.isep.cooking.dao.RecipeDAO;
+import com.isep.cooking.dao.ToolDAO;
 import com.isep.cooking.dao.TransactionManager;
+import com.isep.cooking.dao.UserDAO;
 import com.isep.cooking.entities.CookingUser;
 import com.isep.cooking.entities.Ingredient;
 import com.isep.cooking.entities.Recipe;
@@ -8,45 +12,185 @@ import com.isep.cooking.entities.Tool;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEEDED (for testing purposes only)
 
 	public static void main(String[] args) {
 
-		Ingredient pain = new Ingredient("pain", "grammes", new ArrayList<>(), new ArrayList<>());
-		Ingredient chocolat = new Ingredient("chocolat", "grammes", new ArrayList<>(), new ArrayList<>());
+		//EntityManager em = TransactionManager.initTransaction();
 		
-		CookingUser bob = new CookingUser("bob", "lemoch", "abc", "", "bob@bob.fr", 8, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+		EntityManagerFactory emf = 
+				Persistence.createEntityManagerFactory("cookingPU");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
 		
-		Tool microOnde = new Tool("micro-ondes", new ArrayList<>(), new ArrayList<>());
 		
-		Recipe painAuPain = new Recipe(100, 100, 100, 100, "pain au pain", "1) prenez le pain\n 2) mangez le", 0, 0, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
-		Recipe painAuChocolat = new Recipe(100, 100, 100, 100, "pain au chocolat", "1) prenez le pain\n 2) mettez le chocolat dedans\n 3) mangez le", 0, 0, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+		RecipeDAO rDAO = new RecipeDAO();
+		IngredientDAO iDAO = new IngredientDAO();
+		ToolDAO tDAO = new ToolDAO();
 		
-		pain.addCookingUser(bob);
-		pain.addRecipe(painAuPain);
-		pain.addRecipe(painAuChocolat);
+		List<Recipe> recipes = rDAO.getRecipes();
+		List<Ingredient> ingredients = iDAO.getIngredient();
+		List<Tool> tools = tDAO.getTool();
 		
-		chocolat.addRecipe(painAuChocolat);
+		List<Ingredient> ifr0 = new ArrayList<>();
+		List<Tool> tfr0 = new ArrayList<>();
 		
-		bob.addIngredient(pain);
-		bob.addLikedRecipe(painAuPain);
-		bob.addTool(microOnde);
-		
-		microOnde.addUser(bob);
-		microOnde.addRecipe(painAuPain);
-		
-		painAuPain.addLiker(bob);
-		painAuPain.addIngredient(pain);
-		painAuPain.addTool(microOnde);
-		painAuPain.addQuantity(200);
-		
-		painAuChocolat.addIngredient(pain);
-		painAuChocolat.addQuantity(200);
-		painAuChocolat.addIngredient(chocolat);
-		painAuChocolat.addQuantity(25);
-		painAuChocolat.addTool(microOnde);
+		ifr0.add(ingredients.get(0));
+		ifr0.add(ingredients.get(1));
+		ifr0.add(ingredients.get(2));
+		ifr0.add(ingredients.get(3));
+		ifr0.add(ingredients.get(4));
+		ifr0.add(ingredients.get(5));
+		ifr0.add(ingredients.get(6));
 
+		tfr0.add(tools.get(0));
+		tfr0.add(tools.get(1));
+		tfr0.add(tools.get(2));
+		tfr0.add(tools.get(3));
+		
+		recipes.get(0).setIngredients(ifr0);
+		
+		recipes.get(0).setTools(tfr0);
+		/////////////////////////////////////////////////
+		List<Ingredient> ifr1 = new ArrayList<>();
+		List<Tool> tfr1 = new ArrayList<>();
+		
+		ifr1.add(ingredients.get(1));
+		ifr1.add(ingredients.get(7));
+		ifr1.add(ingredients.get(8));
+		ifr1.add(ingredients.get(9));
+		ifr1.add(ingredients.get(10));
+		ifr1.add(ingredients.get(11));
+		ifr1.add(ingredients.get(21));
+
+		tfr1.add(tools.get(4));
+		tfr1.add(tools.get(5));
+		tfr1.add(tools.get(2));
+		tfr1.add(tools.get(3));
+		
+		recipes.get(1).setIngredients(ifr1);
+		
+		recipes.get(1).setTools(tfr1);
+		/////////////////////////////////////////////////
+		List<Ingredient> ifr2 = new ArrayList<>();
+		List<Tool> tfr2 = new ArrayList<>();
+		
+		ifr2.add(ingredients.get(12));
+		ifr2.add(ingredients.get(10));
+		ifr2.add(ingredients.get(13));
+		ifr2.add(ingredients.get(9));
+		ifr2.add(ingredients.get(7));
+		ifr2.add(ingredients.get(17));
+		ifr2.add(ingredients.get(21));
+
+		tfr2.add(tools.get(7));
+		tfr2.add(tools.get(5));
+		tfr2.add(tools.get(2));
+		tfr2.add(tools.get(3));
+		tfr2.add(tools.get(6));
+		tfr2.add(tools.get(8));
+		tfr2.add(tools.get(9));
+		
+		recipes.get(2).setIngredients(ifr2);
+		
+		recipes.get(2).setTools(tfr2);
+		/////////////////////////////////////////////////
+		List<Ingredient> ifr3 = new ArrayList<>();
+		List<Tool> tfr3 = new ArrayList<>();
+		
+		ifr3.add(ingredients.get(14));
+		ifr3.add(ingredients.get(10));
+		ifr3.add(ingredients.get(15));
+		ifr3.add(ingredients.get(8));
+		ifr3.add(ingredients.get(16));
+
+		tfr3.add(tools.get(10));
+		tfr3.add(tools.get(5));
+		tfr3.add(tools.get(3));
+		
+		recipes.get(3).setIngredients(ifr3);
+		
+		recipes.get(3).setTools(tfr3);
+		/////////////////////////////////////////////////
+		List<Ingredient> ifr4 = new ArrayList<>();
+		List<Tool> tfr4 = new ArrayList<>();
+		
+		ifr4.add(ingredients.get(7));
+		ifr4.add(ingredients.get(18));
+		ifr4.add(ingredients.get(9));
+		ifr4.add(ingredients.get(13));
+		ifr4.add(ingredients.get(5));
+		ifr4.add(ingredients.get(19));
+		ifr4.add(ingredients.get(1));
+		ifr4.add(ingredients.get(20));
+		ifr4.add(ingredients.get(8));
+
+		tfr4.add(tools.get(10));
+		tfr4.add(tools.get(5));
+		tfr4.add(tools.get(3));
+		
+		recipes.get(4).setIngredients(ifr4);
+		
+		recipes.get(4).setTools(tfr4);
+		
+		
+//		Ingredient pain = new Ingredient("pain", "grammes", new ArrayList<>(), new ArrayList<>());
+//		Ingredient chocolat = new Ingredient("chocolat", "grammes", new ArrayList<>(), new ArrayList<>());
+//		
+		CookingUser bob = new CookingUser("bob", "lemoch", "abc", "", "bob@bob.fr", 8, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+//	
+//		Tool microOnde = new Tool("micro-ondes", new ArrayList<>(), new ArrayList<>());
+//		
+//		Recipe painAuPain = new Recipe(100, 100, 100, 100, "pain au pain", "1) prenez le pain\n 2) mangez le", 0, 0, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+//		Recipe painAuChocolat = new Recipe(100, 100, 100, 100, "pain au chocolat", "1) prenez le pain\n 2) mettez le chocolat dedans\n 3) mangez le", 0, 0, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+//		
+//		pain.addCookingUser(bob);
+//		pain.addRecipe(painAuPain);
+//		pain.addRecipe(painAuChocolat);
+//		
+//		chocolat.addRecipe(painAuChocolat);
+//		
+		bob.addIngredient(ingredients.get(0));
+		bob.addIngredient(ingredients.get(1));
+		bob.addIngredient(ingredients.get(2));
+		bob.addIngredient(ingredients.get(3));
+		bob.addIngredient(ingredients.get(4));
+		bob.addIngredient(ingredients.get(5));
+		bob.addIngredient(ingredients.get(6));
+		bob.addIngredient(ingredients.get(7));
+		bob.addIngredient(ingredients.get(8));
+		bob.addLikedRecipe(recipes.get(0));
+		bob.addLikedRecipe(recipes.get(1));
+		bob.addLikedRecipe(recipes.get(2));
+		bob.addTool(tools.get(0));
+		bob.addTool(tools.get(1));
+		bob.addTool(tools.get(2));
+		bob.addTool(tools.get(3));
+		bob.addTool(tools.get(4));
+//		
+//		microOnde.addUser(bob);
+//		microOnde.addRecipe(painAuPain);
+//		
+//		painAuPain.addLiker(bob);
+//		painAuPain.addIngredient(pain);
+//		painAuPain.addTool(microOnde);
+//		painAuPain.addQuantity(200);
+//		
+//		painAuChocolat.addIngredient(pain);
+//		painAuChocolat.addQuantity(200);
+//		painAuChocolat.addIngredient(chocolat);
+//		painAuChocolat.addQuantity(25);
+//		painAuChocolat.addTool(microOnde);
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////
 //		List<CookingUser> users = new ArrayList<>();
 //		List<Ingredient> ingredients = new ArrayList<>();
 //		//List<Ingredient> ingredients2 = new ArrayList<>();
@@ -76,11 +220,15 @@ public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEED
 //		painAuPain.setIngredients(ingredients);
 //		painAuPain.setLikers(users);
 //		painAuPain.setTools(tools);
-
-		EntityManager em = TransactionManager.initTransaction();
+		
 		em.persist(bob);
-		TransactionManager.closeTransaction();
+		//TransactionManager.closeTransaction();
 
+		em.getTransaction().commit();
+		em.close();
+		
+		
+		
 	}
 
 }

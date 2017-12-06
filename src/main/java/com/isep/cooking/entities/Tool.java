@@ -18,10 +18,10 @@ public class Tool implements Serializable {
 
 	private String name;
 
-	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "tools")
+	@ManyToMany(cascade = CascadeType.MERGE, mappedBy = "tools")
 	private List<CookingUser> users;
 
-	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "tools")
+	@ManyToMany(cascade = CascadeType.MERGE, mappedBy = "tools")
 	private List<Recipe> recipes;
 
 	public Tool() {

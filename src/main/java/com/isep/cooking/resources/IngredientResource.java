@@ -61,20 +61,20 @@ public class IngredientResource {
 
 		List<Object> objectIds
 				= object.getJSONArray("ingredientIds").toList();
-		
+
 		List<String> ingredientIds = new ArrayList<>();
-		
+
 		for (Object o : objectIds) {
 			ingredientIds.add(o.toString());
 		}
 
 		List<Ingredient> ingredients = dao.getIngredientsById(ingredientIds);
 		List<JsonIngredient> jsonIngredients = new ArrayList<>();
-		
+
 		for (Ingredient i : ingredients) {
 			jsonIngredients.add(new JsonIngredient(i));
 		}
-		
+
 		return jsonIngredients;
 
 	}
@@ -85,9 +85,7 @@ public class IngredientResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void postIngredient(Ingredient ingredient) {
 
-		if (ingredient.generateId()) {
-			this.dao.persist(ingredient);
-		}
+		this.dao.persist(ingredient);
 
 	}
 }

@@ -1,0 +1,13 @@
+{
+    "kcal": "100",
+    "prot": "100",
+    "calc": "100",
+    "carbs": "100",
+    "name": "Cake au chocolat",
+	"description" : "TEMPS TOTAL : 45 MIN Prép. : 15 min Cuisson : 30 min \nEtape 1 : Faire fondre le chocolat (en morceaux) au bain-marie avec 5 cuillères à soupe d’eau (ou le faire au micro-ondes). \nEtape 2 : Dans un saladier, battre les oeufs avec le sucre, jusqu’à ce que le mélange blanchisse. Ajouter la farine, la levure, le beurre fondu, la poudre d’amandes, et le chocolat. Mélanger. \nEtape 3 : Verser la préparation jusqu’à mi–hauteur d’un moule à cake beurré. \nEtape 4 : Mettre à cuire dans un four préchauffé à 180°C (thermostat 6 ) pendant 30 à 35 min. \nEtape 5 : Attendre 5 min avant de démouler. Laisser refroidir.",
+    "difficulty": "0",
+    "dishesSize": "2",
+    "quantities" : [
+        "150","3", "100", "1", "60", "50", "80"
+    ]
+}

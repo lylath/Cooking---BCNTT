@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.UUID;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -21,6 +22,8 @@ public class Recipe implements Serializable {
 	private int calc;
 	private int carbs;
 	private String name;
+	
+	@Column(length = 3000)
 	private String description;
 	private int difficulty;
 	private int dishesSize;
@@ -31,16 +34,16 @@ public class Recipe implements Serializable {
 	private List<Integer> quantities;
 	
 	@JsonIgnore
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.MERGE)
 	private List<Ingredient> ingredients;
 
 	@JsonIgnore
-	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "likedRecipes")
+	@ManyToMany(cascade = CascadeType.MERGE, mappedBy = "likedRecipes")
 	private List<CookingUser> likers;
 //    //@OneToMany(cascade = CascadeType.MERGE, mappedBy = "likedRecipes")
 //    //private Comment[] comments;
 	@JsonIgnore
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.MERGE)
 	private List<Tool> tools;
 
 	public Recipe() {

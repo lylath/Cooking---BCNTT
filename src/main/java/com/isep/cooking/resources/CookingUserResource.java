@@ -63,21 +63,17 @@ public class CookingUserResource {
 			throws NoSuchAlgorithmException {
 
 		String sessionId = "";
-		
-		if (cookingUser.generateId()) {
-			
-			cookingUser.setPassword(
-					new String(DigestUtils.sha512(cookingUser.getPassword()))
-			);
-			
-			this.dao.persist(cookingUser);
-			
-			CookingUser user = this.dao.getUserByMail(cookingUser.getEmail());
-			
-			sessionId = this.dao.generateSessionId(user);
-			
-		}
-		
+
+		cookingUser.setPassword(
+				new String(DigestUtils.sha512(cookingUser.getPassword()))
+		);
+
+		this.dao.persist(cookingUser);
+
+		CookingUser user = this.dao.getUserByMail(cookingUser.getEmail());
+
+		sessionId = this.dao.generateSessionId(user);
+
 		return sessionId;
 
 	}
@@ -89,17 +85,17 @@ public class CookingUserResource {
 	public String authenticateCookingUser(CookingUser cookingUser)
 			throws NoSuchAlgorithmException {
 
-		String hashedPass =
-				new String(DigestUtils.sha512(cookingUser.getPassword()));
-		
+		String hashedPass
+				= new String(DigestUtils.sha512(cookingUser.getPassword()));
+
 		CookingUser dbUser = this.dao.getUserByMail(cookingUser.getEmail());
-		
+
 		if (dbUser.getPassword().equals(hashedPass)) {
-			
+
 			return this.dao.generateSessionId(dbUser);
-			
+
 		}
-		
+
 		return "";
 
 	}
@@ -125,7 +121,5 @@ public class CookingUserResource {
 //		return "";
 //
 //	}
-	
-	
 
 }

@@ -15,26 +15,30 @@ public class Ingredient implements Serializable {
 	private String id;
 	private String name;
 	private String quantifying;
+	private String category;
 
-	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "ingredients")
+	@ManyToMany(cascade = CascadeType.MERGE, mappedBy = "ingredients")
 	private List<Recipe> recipes;
 
-	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "ingredients")
+	@ManyToMany(cascade = CascadeType.MERGE, mappedBy = "ingredients")
 	private List<CookingUser> users;
 
 	public Ingredient() {
+		this.id = UUID.randomUUID().toString();
 	}
 
 	public Ingredient(
 			String name,
 			String quantifying,
 			List<Recipe> recipes,
-			List<CookingUser> users) {
+			List<CookingUser> users,
+			String category) {
 		this.id = UUID.randomUUID().toString();
 		this.name = name;
 		this.quantifying = quantifying;
 		this.recipes = recipes;
 		this.users = users;
+		this.category = category;
 	}
 
 	public String getId() {
@@ -75,6 +79,14 @@ public class Ingredient implements Serializable {
 
 	public void setRecipes(List<Recipe> recipes) {
 		this.recipes = recipes;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public boolean generateId() {

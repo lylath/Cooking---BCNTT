@@ -28,13 +28,13 @@ public class CookingUser implements Serializable {
 	/*@ManyToMany(cascade = CascadeType.MERGE, mappedBy = "")       NOT IMPLEMENTED YET
     private Comment[] comments;*/
 	@JsonIgnore
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.MERGE)
 	private List<Ingredient> ingredients;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.MERGE)
 	private List<Recipe> likedRecipes;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.MERGE)
 	private List<Tool> tools;
 
 	/*@ManyToMany(cascade = CascadeType.MERGE, mappedBy = "")       NOT IMPLEMENTED YET
