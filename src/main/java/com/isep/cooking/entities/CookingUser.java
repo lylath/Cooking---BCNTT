@@ -49,7 +49,8 @@ public class CookingUser implements Serializable {
 		this.id = UUID.randomUUID().toString();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.password = new String(DigestUtils.sha512(password));
+		String hashedPass = new String(DigestUtils.sha512(password));
+		this.password = hashedPass;
 		this.hashedSessionId = hashedSessionId;
 		this.email = email;
 		this.age = age;

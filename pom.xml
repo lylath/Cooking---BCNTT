@@ -99,7 +99,8 @@
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.isep.cooking.CookingApplication</mainClass>
+                                    <!--<mainClass>com.isep.cooking.CookingApplication</mainClass>-->
+                                    <mainClass>com.isep.cooking.utils.DBFiller</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

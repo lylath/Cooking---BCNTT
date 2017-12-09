@@ -19,7 +19,7 @@
               <transformers>
                 <transformer />
                 <transformer>
-                  <mainClass>com.isep.cooking.CookingApplication</mainClass>
+                  <mainClass>com.isep.cooking.utils.DBFiller</mainClass>
                 </transformer>
               </transformers>
             </configuration>
