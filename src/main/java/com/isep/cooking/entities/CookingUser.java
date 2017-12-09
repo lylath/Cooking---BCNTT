@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import org.apache.commons.codec.digest.DigestUtils;
 
 @Entity
 public class CookingUser implements Serializable {
@@ -16,14 +17,14 @@ public class CookingUser implements Serializable {
 	@Id
 	private String id;
 
-	private String FirstName;
-	private String LastName;
-	private String Password;
+	private String firstName;
+	private String lastName;
+	private String password;
 	private String hashedSessionId;
-	
+
 	@Column(unique = true)
-	private String Email;
-	private int Age;
+	private String email;
+	private int age;
 
 	/*@ManyToMany(cascade = CascadeType.MERGE, mappedBy = "")       NOT IMPLEMENTED YET
     private Comment[] comments;*/
@@ -43,15 +44,15 @@ public class CookingUser implements Serializable {
 		this.id = UUID.randomUUID().toString();
 	}
 
-	public CookingUser(String FirstName, String LastName, String Password, String hashedSessionId, String Email, int Age, List<Ingredient> ingredients, List<Recipe> likedRecipes, List<Tool> tools) {
+	public CookingUser(String firstName, String lastName, String password, String hashedSessionId, String email, int age, List<Ingredient> ingredients, List<Recipe> likedRecipes, List<Tool> tools) {
 
 		this.id = UUID.randomUUID().toString();
-		this.FirstName = FirstName;
-		this.LastName = LastName;
-		this.Password = Password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = new String(DigestUtils.sha512(password));
 		this.hashedSessionId = hashedSessionId;
-		this.Email = Email;
-		this.Age = Age;
+		this.email = email;
+		this.age = age;
 		this.ingredients = ingredients;
 		this.likedRecipes = likedRecipes;
 		this.tools = tools;
@@ -66,27 +67,27 @@ public class CookingUser implements Serializable {
 	}
 
 	public String getFirstName() {
-		return FirstName;
+		return firstName;
 	}
 
 	public void setFirstName(String FirstName) {
-		this.FirstName = FirstName;
+		this.firstName = FirstName;
 	}
 
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 
 	public void setLastName(String LastName) {
-		this.LastName = LastName;
+		this.lastName = LastName;
 	}
 
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 
 	public void setPassword(String Password) {
-		this.Password = Password;
+		this.password = Password;
 	}
 
 	public String getHashedSessionId() {
@@ -98,19 +99,19 @@ public class CookingUser implements Serializable {
 	}
 
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 
 	public void setEmail(String Email) {
-		this.Email = Email;
+		this.email = Email;
 	}
 
 	public int getAge() {
-		return Age;
+		return age;
 	}
 
 	public void setAge(int Age) {
-		this.Age = Age;
+		this.age = Age;
 	}
 
 	public List<Ingredient> getIngredients() {
