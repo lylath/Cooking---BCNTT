@@ -162,15 +162,11 @@ Just this would be acceptable : every single field is optional (so far).
 The computer that runs this jar becomes a server. Data about users, recipes etc. are stored in a database, but pictures are stored as png files.
 Downloading pictures using the rest api is really simple, you first need to add the picture (as a *png* file) in the following directory:
 
-```
-src/main/resources/pictures/
-```
+```src/main/resources/pictures/```
 
 Once stored there, the picture can be accessed through a GET request :
 
-```
-http://localhost:8080/picture/[name_of_the_png_file]
-```
+```http://localhost:8080/picture/[name_of_the_png_file]```
 
 Note that the name of the file should not contain the extension of it (as all files stored in there are supposed to be .png).
 For example the command ```http://localhost:8080/picture/hello_world``` would return you the file ```src/main/resources/pictures/hello_world.png``` (if it exists of course).
@@ -179,12 +175,8 @@ In order to reduce calls to database, files stored in this directory shall be na
 Let a3b2bfdc-4809-44ac-b463-94fa1eebeb39 be the UUID of a recipe "A".
 The picture for this recipe should be :
 
-```
-src/main/resources/pictures/a3b2bfdc-4809-44ac-b463-94fa1eebeb39.png
-```
+```src/main/resources/pictures/a3b2bfdc-4809-44ac-b463-94fa1eebeb39.png```
 
 This way it is very simple to retrieve the picture for a given object :
 
-```
-http://localhost:8080/picture/[uuid_of_the_object]
-```
+```http://localhost:8080/picture/[uuid_of_the_object]```
