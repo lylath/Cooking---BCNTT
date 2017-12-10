@@ -1,13 +1,9 @@
 package com.isep.cooking.resources;
 
-import com.isep.cooking.entities.CookingUser;
-import com.isep.cooking.jsonEntities.JsonCookingUser;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.imageio.ImageIO;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -28,7 +24,7 @@ public class PictureResource {
 			throws IOException {
 
 		BufferedImage bi = ImageIO.read(
-				new File("src/main/resources/images/" + uuid + ".png"));
+				new File("src/main/resources/pictures/" + uuid + ".png"));
 
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		ImageIO.write(bi, "png", baos);
