@@ -86,6 +86,4 @@ curl -X POST -H "Content-Type:application/json" -d @src/main/resources/jsons/ing
 
 
 
-
-
 java -jar jars/db_filler.jar

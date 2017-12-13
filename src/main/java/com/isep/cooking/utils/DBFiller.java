@@ -20,24 +20,22 @@ public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEED
 	public static void main(String[] args) {
 
 		//EntityManager em = TransactionManager.initTransaction();
-		
-		EntityManagerFactory emf = 
-				Persistence.createEntityManagerFactory("cookingPU");
+		EntityManagerFactory emf
+				= Persistence.createEntityManagerFactory("cookingPU");
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		
-		
+
 		RecipeDAO rDAO = new RecipeDAO();
 		IngredientDAO iDAO = new IngredientDAO();
 		ToolDAO tDAO = new ToolDAO();
-		
+
 		List<Recipe> recipes = rDAO.getRecipes();
 		List<Ingredient> ingredients = iDAO.getIngredient();
 		List<Tool> tools = tDAO.getTool();
-		
+
 		List<Ingredient> ifr0 = new ArrayList<>();
 		List<Tool> tfr0 = new ArrayList<>();
-		
+
 		ifr0.add(ingredients.get(0));
 		ifr0.add(ingredients.get(1));
 		ifr0.add(ingredients.get(2));
@@ -45,19 +43,26 @@ public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEED
 		ifr0.add(ingredients.get(4));
 		ifr0.add(ingredients.get(5));
 		ifr0.add(ingredients.get(6));
-	
+
+//		ingredients.get(0).addRecipe(recipes.get(0));
+//		ingredients.get(1).addRecipe(recipes.get(0));
+//		ingredients.get(2).addRecipe(recipes.get(0));
+//		ingredients.get(3).addRecipe(recipes.get(0));
+//		ingredients.get(4).addRecipe(recipes.get(0));
+//		ingredients.get(5).addRecipe(recipes.get(0));
+//		ingredients.get(6).addRecipe(recipes.get(0));
 		tfr0.add(tools.get(0));
 		tfr0.add(tools.get(1));
 		tfr0.add(tools.get(2));
 		tfr0.add(tools.get(3));
-		
+
 		recipes.get(0).setIngredients(ifr0);
-		
+
 		recipes.get(0).setTools(tfr0);
 		/////////////////////////////////////////////////
 		List<Ingredient> ifr1 = new ArrayList<>();
 		List<Tool> tfr1 = new ArrayList<>();
-		
+
 		ifr1.add(ingredients.get(1));
 		ifr1.add(ingredients.get(7));
 		ifr1.add(ingredients.get(8));
@@ -65,19 +70,26 @@ public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEED
 		ifr1.add(ingredients.get(10));
 		ifr1.add(ingredients.get(11));
 		ifr1.add(ingredients.get(21));
-		
+
+//		ingredients.get(1).addRecipe(recipes.get(1));
+//		ingredients.get(7).addRecipe(recipes.get(1));
+//		ingredients.get(8).addRecipe(recipes.get(1));
+//		ingredients.get(9).addRecipe(recipes.get(1));
+//		ingredients.get(10).addRecipe(recipes.get(1));
+//		ingredients.get(11).addRecipe(recipes.get(1));
+//		ingredients.get(21).addRecipe(recipes.get(1));
 		tfr1.add(tools.get(4));
 		tfr1.add(tools.get(5));
 		tfr1.add(tools.get(2));
 		tfr1.add(tools.get(3));
-		
+
 		recipes.get(1).setIngredients(ifr1);
-		
+
 		recipes.get(1).setTools(tfr1);
 		/////////////////////////////////////////////////
 		List<Ingredient> ifr2 = new ArrayList<>();
 		List<Tool> tfr2 = new ArrayList<>();
-		
+
 		ifr2.add(ingredients.get(12));
 		ifr2.add(ingredients.get(10));
 		ifr2.add(ingredients.get(13));
@@ -85,7 +97,14 @@ public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEED
 		ifr2.add(ingredients.get(7));
 		ifr2.add(ingredients.get(17));
 		ifr2.add(ingredients.get(21));
-		
+
+//		ingredients.get(12).addRecipe(recipes.get(2));
+//		ingredients.get(10).addRecipe(recipes.get(2));
+//		ingredients.get(13).addRecipe(recipes.get(2));
+//		ingredients.get(9).addRecipe(recipes.get(2));
+//		ingredients.get(7).addRecipe(recipes.get(2));
+//		ingredients.get(17).addRecipe(recipes.get(2));
+//		ingredients.get(21).addRecipe(recipes.get(2));
 		tfr2.add(tools.get(7));
 		tfr2.add(tools.get(5));
 		tfr2.add(tools.get(2));
@@ -93,31 +112,36 @@ public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEED
 		tfr2.add(tools.get(6));
 		tfr2.add(tools.get(8));
 		tfr2.add(tools.get(9));
-		
+
 		recipes.get(2).setIngredients(ifr2);
-		
+
 		recipes.get(2).setTools(tfr2);
 		/////////////////////////////////////////////////
 		List<Ingredient> ifr3 = new ArrayList<>();
 		List<Tool> tfr3 = new ArrayList<>();
-		
+
 		ifr3.add(ingredients.get(14));
 		ifr3.add(ingredients.get(10));
 		ifr3.add(ingredients.get(15));
 		ifr3.add(ingredients.get(8));
 		ifr3.add(ingredients.get(16));
-		
+
+//		ingredients.get(14).addRecipe(recipes.get(3));
+//		ingredients.get(10).addRecipe(recipes.get(3));
+//		ingredients.get(15).addRecipe(recipes.get(3));
+//		ingredients.get(8).addRecipe(recipes.get(3));
+//		ingredients.get(16).addRecipe(recipes.get(3));
 		tfr3.add(tools.get(10));
 		tfr3.add(tools.get(5));
 		tfr3.add(tools.get(3));
-		
+
 		recipes.get(3).setIngredients(ifr3);
-		
+
 		recipes.get(3).setTools(tfr3);
 		/////////////////////////////////////////////////
 		List<Ingredient> ifr4 = new ArrayList<>();
 		List<Tool> tfr4 = new ArrayList<>();
-		
+
 		ifr4.add(ingredients.get(7));
 		ifr4.add(ingredients.get(18));
 		ifr4.add(ingredients.get(9));
@@ -127,16 +151,35 @@ public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEED
 		ifr4.add(ingredients.get(1));
 		ifr4.add(ingredients.get(20));
 		ifr4.add(ingredients.get(8));
-		
+
+//		ingredients.get(7).addRecipe(recipes.get(4));
+//		ingredients.get(18).addRecipe(recipes.get(4));
+//		ingredients.get(9).addRecipe(recipes.get(4));
+//		ingredients.get(13).addRecipe(recipes.get(4));
+//		ingredients.get(5).addRecipe(recipes.get(4));
+//		ingredients.get(19).addRecipe(recipes.get(4));
+//		ingredients.get(1).addRecipe(recipes.get(4));
+//		ingredients.get(20).addRecipe(recipes.get(4));
+//		ingredients.get(8).addRecipe(recipes.get(4));
 		tfr4.add(tools.get(10));
 		tfr4.add(tools.get(5));
 		tfr4.add(tools.get(3));
-		
+
 		recipes.get(4).setIngredients(ifr4);
-		
+
 		recipes.get(4).setTools(tfr4);
-		
-		
+		//////////////////////////////////////////
+//
+//		for (Recipe r : recipes) {
+//
+//			for (Ingredient ings : r.getIngredients()) {
+//
+//				ings.addRecipe(r);
+//
+//			}
+//
+//		}
+
 //		Ingredient pain = new Ingredient("pain", "grammes", new ArrayList<>(), new ArrayList<>());
 //		Ingredient chocolat = new Ingredient("chocolat", "grammes", new ArrayList<>(), new ArrayList<>());
 //		
@@ -185,11 +228,6 @@ public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEED
 //		painAuChocolat.addQuantity(25);
 //		painAuChocolat.addTool(microOnde);
 
-
-
-
-
-
 ///////////////////////////////////////////////////////////////
 //		List<CookingUser> users = new ArrayList<>();
 //		List<Ingredient> ingredients = new ArrayList<>();
@@ -220,7 +258,6 @@ public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEED
 //		painAuPain.setIngredients(ingredients);
 //		painAuPain.setLikers(users);
 //		painAuPain.setTools(tools);
-		
 		em.persist(bob);
 		em.merge(recipes.get(0));
 		em.merge(recipes.get(1));
@@ -231,9 +268,7 @@ public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEED
 
 		em.getTransaction().commit();
 		em.close();
-		
-		
-		
+
 	}
 
 }
