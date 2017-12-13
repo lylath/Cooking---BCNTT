@@ -45,7 +45,7 @@ public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEED
 		ifr0.add(ingredients.get(4));
 		ifr0.add(ingredients.get(5));
 		ifr0.add(ingredients.get(6));
-
+	
 		tfr0.add(tools.get(0));
 		tfr0.add(tools.get(1));
 		tfr0.add(tools.get(2));
@@ -65,7 +65,7 @@ public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEED
 		ifr1.add(ingredients.get(10));
 		ifr1.add(ingredients.get(11));
 		ifr1.add(ingredients.get(21));
-
+		
 		tfr1.add(tools.get(4));
 		tfr1.add(tools.get(5));
 		tfr1.add(tools.get(2));
@@ -85,7 +85,7 @@ public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEED
 		ifr2.add(ingredients.get(7));
 		ifr2.add(ingredients.get(17));
 		ifr2.add(ingredients.get(21));
-
+		
 		tfr2.add(tools.get(7));
 		tfr2.add(tools.get(5));
 		tfr2.add(tools.get(2));
@@ -106,7 +106,7 @@ public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEED
 		ifr3.add(ingredients.get(15));
 		ifr3.add(ingredients.get(8));
 		ifr3.add(ingredients.get(16));
-
+		
 		tfr3.add(tools.get(10));
 		tfr3.add(tools.get(5));
 		tfr3.add(tools.get(3));
@@ -127,7 +127,7 @@ public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEED
 		ifr4.add(ingredients.get(1));
 		ifr4.add(ingredients.get(20));
 		ifr4.add(ingredients.get(8));
-
+		
 		tfr4.add(tools.get(10));
 		tfr4.add(tools.get(5));
 		tfr4.add(tools.get(3));
@@ -222,6 +222,11 @@ public class DBFiller { //RUN THIS FILE TO REPOPULATE THE DATABASE IF IT IS NEED
 //		painAuPain.setTools(tools);
 		
 		em.persist(bob);
+		em.merge(recipes.get(0));
+		em.merge(recipes.get(1));
+		em.merge(recipes.get(2));
+		em.merge(recipes.get(3));
+		em.merge(recipes.get(4));
 		//TransactionManager.closeTransaction();
 
 		em.getTransaction().commit();

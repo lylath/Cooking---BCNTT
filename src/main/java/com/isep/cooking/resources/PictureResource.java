@@ -23,6 +23,10 @@ public class PictureResource {
 	public Response getCookingUser(@PathParam("uuid") String uuid)
 			throws IOException {
 
+		if (uuid.contains("/")||uuid.contains("\\")||uuid.contains(".")) {
+			return Response.serverError().build();
+		}
+		
 		BufferedImage bi = ImageIO.read(
 				new File("src/main/resources/pictures/" + uuid + ".png"));
 

@@ -5,7 +5,6 @@ import com.isep.cooking.entities.Ingredient;
 import com.isep.cooking.jsonEntities.JsonIngredient;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
